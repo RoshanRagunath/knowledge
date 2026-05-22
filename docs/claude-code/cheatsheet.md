@@ -6,7 +6,7 @@ description: The slash commands, file references, and configuration patterns I r
 
 # Claude Code cheatsheet
 
-The commands and patterns I actually use day to day. Not exhaustive — just what earns its keep.
+The commands and patterns I actually use day to day. Not exhaustive -- just what earns its keep.
 
 ## Slash commands
 
@@ -25,8 +25,8 @@ The commands and patterns I actually use day to day. Not exhaustive — just wha
 
 ## File references
 
-- `@<path>` — reference a file in your message (e.g. `@src/app.ts please explain`). Claude reads it directly instead of you pasting.
-- `@<folder>/` — reference a folder; useful when you want Claude to scan a small directory.
+- `@<path>` -- reference a file in your message (e.g. `@src/app.ts please explain`). Claude reads it directly instead of you pasting.
+- `@<folder>/` -- reference a folder; useful when you want Claude to scan a small directory.
 
 ## Project configuration
 
@@ -65,7 +65,7 @@ Patterns use glob-style wildcards. `Bash(npm run *)` allows any `npm run` subcom
 
 ## Hooks (automated behaviors)
 
-Settings.json hooks run shell commands on events (Stop, PreToolUse, PostToolUse, etc.). Use them when you need a behavior to fire deterministically — memory and CLAUDE.md instructions are advisory, hooks are not.
+Settings.json hooks run shell commands on events (Stop, PreToolUse, PostToolUse, etc.). Use them when you need a behavior to fire deterministically -- memory and CLAUDE.md instructions are advisory, hooks are not.
 
 ```json
 {
@@ -89,9 +89,9 @@ Useful when the change is non-trivial. Claude explores, writes a plan to a file,
 
 Spawn specialized agents for parallel or isolated work:
 
-- `Explore` — fast read-only search, returns excerpts. Good for "where is X defined."
-- `Plan` — software-architect-style implementation planning.
-- `general-purpose` — broad multi-step work.
+- `Explore` -- fast read-only search, returns excerpts. Good for "where is X defined."
+- `Plan` -- software-architect-style implementation planning.
+- `general-purpose` -- broad multi-step work.
 
 Custom agents go in `.claude/agents/<name>.md` with a `description` field. Trigger by description match or via `Agent(subagent_type: "<name>")`.
 
@@ -108,8 +108,8 @@ Memory persists across conversations and lives outside the project:
 ```
 
 Trigger phrases:
-- "remember that I always want X" — saves a feedback memory
-- "forget that" — finds and removes the relevant entry
+- "remember that I always want X" -- saves a feedback memory
+- "forget that" -- finds and removes the relevant entry
 
 ## Useful Bash patterns
 

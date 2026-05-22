@@ -7,7 +7,7 @@ tags: [meta]
 
 I'm starting a public knowledge base.
 
-The plan is simple: when I learn something useful — a Claude Code pattern, an n8n trick, a Betty Blocks edge case — I write it down here instead of letting it evaporate.
+The plan is simple: when I learn something useful -- a Claude Code pattern, an n8n trick, a Betty Blocks edge case -- I write it down here instead of letting it evaporate.
 
 {/* truncate */}
 
@@ -19,8 +19,8 @@ Notion stays for messy drafts and personal capture. This site is for things that
 
 ## What to expect
 
-- **Cheatsheets** in `/docs/` — durable references like the [Claude Code cheatsheet](/docs/claude-code/cheatsheet). I update these in place.
-- **Posts** here on the blog — things I figured out this week, or rough notes I haven't promoted to a cheatsheet yet.
+- **Cheatsheets** in `/docs/` -- durable references like the [Claude Code cheatsheet](/docs/claude-code/cheatsheet). I update these in place.
+- **Posts** here on the blog -- things I figured out this week, or rough notes I haven't promoted to a cheatsheet yet.
 
 No schedule. I write when there's something worth writing.
 
@@ -28,4 +28,4 @@ No schedule. I write when there's something worth writing.
 
 This site runs on Docusaurus, hosted on Cloudflare Pages, source on GitHub. The whole stack is free and the build-to-live time is about 30 seconds. Hard to beat for a developer content site.
 
-You can find the source at [github.com/Roshiejj95/knowledge](https://github.com/Roshiejj95/knowledge) — PRs and corrections welcome.
+You can find the source at [github.com/Roshiejj95/knowledge](https://github.com/Roshiejj95/knowledge) -- PRs and corrections welcome.

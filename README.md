@@ -1,6 +1,6 @@
 # knowledge
 
-Source for [knowledge.roshanragunath.com](https://knowledge.roshanragunath.com) — a public knowledge base of cheatsheets and tutorials from Roshan Ragunath.
+Source for [knowledge.roshanragunath.com](https://knowledge.roshanragunath.com) -- a public knowledge base of cheatsheets and tutorials from Roshan Ragunath.
 
 ## Stack
 

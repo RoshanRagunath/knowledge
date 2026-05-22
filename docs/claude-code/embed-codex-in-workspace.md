@@ -1,13 +1,13 @@
 ---
 sidebar_position: 2
 title: Embedding Claude Code and Codex in the same workspace
-description: Running Claude Code and OpenAI Codex CLI side by side on the same project — setup, isolation, and avoiding stepping on each other.
+description: Running Claude Code and OpenAI Codex CLI side by side on the same project -- setup, isolation, and avoiding stepping on each other.
 draft: false
 ---
 
 # Embedding Claude Code and Codex in the same workspace
 
-> **Status**: Work in progress. Notes from my own experiments — expect revisions.
+> **Status**: Work in progress. Notes from my own experiments -- expect revisions.
 
 Both Claude Code (Anthropic) and OpenAI Codex CLI are useful AI coding tools, and they're not mutually exclusive. This is a working doc on running them side by side in the same project directory.
 
@@ -69,7 +69,7 @@ You can either:
 1. **Keep them separate**. Different files, different audiences (each tool gets its own personality).
 2. **Symlink one to the other** (or a shared `AGENTS.md` that both reference). Single source of truth, but you lose tool-specific instructions.
 
-I'm currently running them separate, with about 80% content overlap that I copy-paste when something general changes. Not ideal — looking for a better pattern.
+I'm currently running them separate, with about 80% content overlap that I copy-paste when something general changes. Not ideal -- looking for a better pattern.
 
 ## Open questions (things I haven't figured out yet)
 
@@ -77,4 +77,4 @@ I'm currently running them separate, with about 80% content overlap that I copy-
 - Whether to share or isolate session memory (Claude Code has explicit memory; Codex has more session-local state).
 - How to make MCP servers configured for one available to the other.
 
-If you've solved any of these, [open an issue or PR](https://github.com/Roshiejj95/knowledge) — I'll update this page.
+If you've solved any of these, [open an issue or PR](https://github.com/Roshiejj95/knowledge) -- I'll update this page.
