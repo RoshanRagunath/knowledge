@@ -1,0 +1,8 @@
+{
+  "label": "Claude Code",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Notes, cheatsheets, and patterns for working with Claude Code, Anthropic's CLI for AI-assisted development."
+  }
+}

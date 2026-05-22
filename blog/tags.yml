@@ -1,0 +1,19 @@
+claude-code:
+  label: Claude Code
+  permalink: /claude-code
+  description: Posts about Anthropic's Claude Code CLI
+
+n8n:
+  label: n8n
+  permalink: /n8n
+  description: Posts about n8n automation workflows
+
+betty-blocks:
+  label: Betty Blocks
+  permalink: /betty-blocks
+  description: Posts about Betty Blocks low-code development
+
+meta:
+  label: Meta
+  permalink: /meta
+  description: About this site
