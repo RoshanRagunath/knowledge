@@ -77,4 +77,4 @@ I'm currently running them separate, with about 80% content overlap that I copy-
 - Whether to share or isolate session memory (Claude Code has explicit memory; Codex has more session-local state).
 - How to make MCP servers configured for one available to the other.
 
-If you've solved any of these, [open an issue or PR](https://github.com/Roshiejj95/knowledge) -- I'll update this page.
+If you've solved any of these, [open an issue or PR](https://github.com/RoshanRagunath/knowledge) -- I'll update this page.

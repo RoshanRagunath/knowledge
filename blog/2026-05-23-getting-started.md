@@ -28,4 +28,4 @@ No schedule. I write when there's something worth writing.
 
 This site runs on Docusaurus, hosted on Cloudflare Pages, source on GitHub. The whole stack is free and the build-to-live time is about 30 seconds. Hard to beat for a developer content site.
 
-You can find the source at [github.com/Roshiejj95/knowledge](https://github.com/Roshiejj95/knowledge) -- PRs and corrections welcome.
+You can find the source at [github.com/RoshanRagunath/knowledge](https://github.com/RoshanRagunath/knowledge) -- PRs and corrections welcome.

@@ -25,4 +25,4 @@ Everything here is written because past-me would have wanted it. If it helps fut
 
 I'm Roshan, a consultant and developer based in the Netherlands. I work mostly in Betty Blocks and NetSuite during the day, and spend my free time learning n8n and Claude Code. More at [roshanragunath.com](https://roshanragunath.com).
 
-The source for this site lives at [github.com/Roshiejj95/knowledge](https://github.com/Roshiejj95/knowledge) -- corrections and additions welcome.
+The source for this site lives at [github.com/RoshanRagunath/knowledge](https://github.com/RoshanRagunath/knowledge) -- corrections and additions welcome.

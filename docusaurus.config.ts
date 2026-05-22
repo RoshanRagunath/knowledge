@@ -14,7 +14,7 @@ const config: Config = {
   url: 'https://knowledge.roshanragunath.com',
   baseUrl: '/',
 
-  organizationName: 'Roshiejj95',
+  organizationName: 'RoshanRagunath',
   projectName: 'knowledge',
 
   onBrokenLinks: 'throw',
@@ -30,7 +30,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/Roshiejj95/knowledge/tree/main/',
+          editUrl: 'https://github.com/RoshanRagunath/knowledge/tree/main/',
         },
         blog: {
           showReadingTime: true,
@@ -38,7 +38,7 @@ const config: Config = {
             type: ['rss', 'atom'],
             xslt: true,
           },
-          editUrl: 'https://github.com/Roshiejj95/knowledge/tree/main/',
+          editUrl: 'https://github.com/RoshanRagunath/knowledge/tree/main/',
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
@@ -79,7 +79,7 @@ const config: Config = {
           position: 'right',
         },
         {
-          href: 'https://github.com/Roshiejj95/knowledge',
+          href: 'https://github.com/RoshanRagunath/knowledge',
           label: 'GitHub',
           position: 'right',
         },
@@ -110,7 +110,7 @@ const config: Config = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/Roshiejj95',
+              href: 'https://github.com/RoshanRagunath',
             },
           ],
         },
