@@ -1,23 +1,100 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
+/* Cursor-inspired light hero, generous spacing. */
 
-.heroBanner {
-  padding: 4rem 0;
-  text-align: center;
+.hero {
   position: relative;
+  padding: 110px 24px 90px;
   overflow: hidden;
+  background:
+    radial-gradient(900px 500px at 75% -10%, rgba(37, 99, 235, 0.08), transparent 60%),
+    radial-gradient(700px 400px at 10% 110%, rgba(99, 102, 241, 0.06), transparent 60%),
+    var(--ifm-background-color);
+  border-bottom: 1px solid var(--ifm-toc-border-color);
 }
 
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
-  }
+.heroInner {
+  max-width: 920px;
+  margin: 0 auto;
+  text-align: left;
 }
 
-.buttons {
+.eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ifm-color-primary);
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-radius: 999px;
+  padding: 6px 12px;
+  margin-bottom: 22px;
+}
+
+.heroTitle {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--ifm-color-content);
+  margin: 0 0 18px;
+}
+
+.heroSubtitle {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--ifm-color-content-secondary);
+  max-width: 640px;
+  margin: 0 0 30px;
+}
+
+.heroCtas {
   display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btnPrimary,
+.btnGhost {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 11px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.btnPrimary {
+  background: var(--ifm-color-primary);
+  color: #FFFFFF;
+  border: 1px solid var(--ifm-color-primary);
+}
+.btnPrimary:hover {
+  background: var(--ifm-color-primary-dark);
+  color: #FFFFFF;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.btnGhost {
+  background: transparent;
+  color: var(--ifm-color-content);
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+.btnGhost:hover {
+  background: var(--ifm-color-emphasis-100);
+  color: var(--ifm-color-content);
+  text-decoration: none;
+}
+
+.main {
+  background: var(--ifm-background-color);
+}
+
+@media (max-width: 760px) {
+  .hero { padding: 70px 20px 60px; }
+  .heroSubtitle { font-size: 1.05rem; }
 }

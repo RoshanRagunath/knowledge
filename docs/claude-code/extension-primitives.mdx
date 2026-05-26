@@ -1,0 +1,339 @@
+---
+sidebar_position: 2
+title: Claude Code extension primitives
+description: Hooks, Skills, Plugins, CLAUDE.md, subagents, MCP -- what they each are, when they load, and which one to reach for.
+---
+
+import styles from './extension-primitives.module.css';
+
+# Claude Code extension primitives
+
+<div className={styles.page}>
+
+The terms blur together because they all "extend Claude Code" but they sit at different layers. The fastest way to keep them straight is to ask two questions about each one: **when does it load**, and **who triggers it**.
+
+<div className={styles.intro}>
+  <p><strong>The mental model in one sentence:</strong> some files are always in front of Claude (<code>CLAUDE.md</code>), some are invoked on demand (Skills, Subagents, MCP), some fire automatically on events (Hooks), and some bundle everything together for sharing (Plugins).</p>
+</div>
+
+## The five layers
+
+Each card below shows: the primitive, where it lives, and what it does in one line.
+
+<div className={styles.layerStack}>
+
+  <div className={`${styles.layer} ${styles.always}`}>
+    <div className={styles.layerHeader}>
+      <span className={styles.layerTag}>Always loaded</span>
+      <span className={styles.layerWho}>Sits in context every turn. You write it.</span>
+    </div>
+    <div className={styles.cardGrid}>
+      <div className={styles.card}>
+        <div className={styles.cardName}>CLAUDE.md</div>
+        <div className={styles.cardPath}>project root or <code>~/.claude/</code></div>
+        <p className={styles.cardDesc}>Project conventions, your role, tool preferences. Loaded every conversation.</p>
+      </div>
+      <div className={styles.card}>
+        <div className={styles.cardName}>CLAUDE.local.md</div>
+        <div className={styles.cardPath}>project root (git-ignored)</div>
+        <p className={styles.cardDesc}>Personal overrides that shouldn't be shared with the team.</p>
+      </div>
+      <div className={styles.card}>
+        <div className={styles.cardName}>Memory</div>
+        <div className={styles.cardPath}>{'~/.claude/projects/<slug>/memory/'}</div>
+        <p className={styles.cardDesc}>Claude-written notes that persist across conversations. You don't edit these by hand.</p>
+      </div>
+    </div>
+  </div>
+
+  <div className={`${styles.layer} ${styles.ondemand}`}>
+    <div className={styles.layerHeader}>
+      <span className={styles.layerTag}>On-demand</span>
+      <span className={styles.layerWho}>Claude reads the description, then invokes when relevant.</span>
+    </div>
+    <div className={styles.cardGrid}>
+      <div className={styles.card}>
+        <div className={styles.cardName}>Skills</div>
+        <div className={styles.cardPath}>.claude/skills/&lt;name&gt;/SKILL.md</div>
+        <p className={styles.cardDesc}>Reusable workflows. Only the frontmatter description sits in context. Full body loads when Claude picks it.</p>
+      </div>
+      <div className={styles.card}>
+        <div className={styles.cardName}>Subagents</div>
+        <div className={styles.cardPath}>.claude/agents/&lt;name&gt;.md</div>
+        <p className={styles.cardDesc}>Specialized workers with their own context window. Claude delegates via the Agent tool.</p>
+      </div>
+      <div className={styles.card}>
+        <div className={styles.cardName}>MCP servers</div>
+        <div className={styles.cardPath}>.mcp.json or settings.json</div>
+        <p className={styles.cardDesc}>External tool providers. Show up as extra tools (e.g. an n8n MCP exposes workflow tools).</p>
+      </div>
+    </div>
+  </div>
+
+  <div className={`${styles.layer} ${styles.event}`}>
+    <div className={styles.layerHeader}>
+      <span className={styles.layerTag}>Event-driven</span>
+      <span className={styles.layerWho}>The harness fires these automatically. Claude can't skip them.</span>
+    </div>
+    <div className={styles.cardGrid}>
+      <div className={styles.card}>
+        <div className={styles.cardName}>Hooks</div>
+        <div className={styles.cardPath}>.claude/settings.json</div>
+        <p className={styles.cardDesc}>Shell commands triggered by events: <code>PreToolUse</code>, <code>PostToolUse</code>, <code>UserPromptSubmit</code>, <code>Stop</code>, <code>SessionStart</code>.</p>
+      </div>
+      <div className={styles.card}>
+        <div className={styles.cardName}>settings.json</div>
+        <div className={styles.cardPath}>.claude/settings.json or {'~/.claude/'}</div>
+        <p className={styles.cardDesc}>The harness config. Hooks, permissions, env vars, model selection, statusline, skillOverrides.</p>
+      </div>
+    </div>
+  </div>
+
+  <div className={`${styles.layer} ${styles.user}`}>
+    <div className={styles.layerHeader}>
+      <span className={styles.layerTag}>User-triggered</span>
+      <span className={styles.layerWho}>You type the name. Claude expands the prompt.</span>
+    </div>
+    <div className={styles.cardGrid}>
+      <div className={styles.card}>
+        <div className={styles.cardName}>Slash commands</div>
+        <div className={styles.cardPath}>.claude/commands/&lt;name&gt;.md</div>
+        <p className={styles.cardDesc}>Type <code>/name</code> in chat to expand. Newer projects use user-invocable Skills instead -- same effect, more features.</p>
+      </div>
+    </div>
+  </div>
+
+  <div className={`${styles.layer} ${styles.dist}`}>
+    <div className={styles.layerHeader}>
+      <span className={styles.layerTag}>Distribution</span>
+      <span className={styles.layerWho}>One install brings everything above with it.</span>
+    </div>
+    <div className={styles.cardGrid}>
+      <div className={styles.card}>
+        <div className={styles.cardName}>Plugins</div>
+        <div className={styles.cardPath}>.claude-plugin/plugin.json</div>
+        <p className={styles.cardDesc}>A packaging format. Bundles skills, hooks, slash commands, subagents, and MCP servers into one shareable unit.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+## Quick reference
+
+<div className={styles.tableWrap}>
+  <table>
+    <thead>
+      <tr>
+        <th>Primitive</th>
+        <th>Location</th>
+        <th>Who triggers</th>
+        <th>When loaded</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td className={styles.colName}>CLAUDE.md</td>
+        <td><code>project root</code></td>
+        <td>(automatic)</td>
+        <td>Every turn</td>
+      </tr>
+      <tr>
+        <td className={styles.colName}>Skills</td>
+        <td><code>.claude/skills/&lt;name&gt;/</code></td>
+        <td>Claude (picks it)</td>
+        <td>On invocation</td>
+      </tr>
+      <tr>
+        <td className={styles.colName}>Subagents</td>
+        <td><code>.claude/agents/&lt;name&gt;.md</code></td>
+        <td>Claude (delegates)</td>
+        <td>On invocation, separate context</td>
+      </tr>
+      <tr>
+        <td className={styles.colName}>Hooks</td>
+        <td><code>settings.json</code></td>
+        <td>Harness (on event)</td>
+        <td>Deterministic, every matching event</td>
+      </tr>
+      <tr>
+        <td className={styles.colName}>Slash commands</td>
+        <td><code>.claude/commands/&lt;name&gt;.md</code></td>
+        <td>You type <code>/name</code></td>
+        <td>When typed</td>
+      </tr>
+      <tr>
+        <td className={styles.colName}>MCP servers</td>
+        <td><code>.mcp.json</code></td>
+        <td>Configured, then Claude calls tools</td>
+        <td>Tools listed every turn, invoked on demand</td>
+      </tr>
+      <tr>
+        <td className={styles.colName}>settings.json</td>
+        <td><code>.claude/settings.json</code></td>
+        <td>Harness (reads at start)</td>
+        <td>Session start</td>
+      </tr>
+      <tr>
+        <td className={styles.colName}>Memory</td>
+        <td>{'~/.claude/projects/.../memory/'}</td>
+        <td>Claude (writes it)</td>
+        <td>Across conversations</td>
+      </tr>
+      <tr>
+        <td className={styles.colName}>Plugins</td>
+        <td><code>.claude-plugin/plugin.json</code></td>
+        <td>Installer</td>
+        <td>Bundles all of the above</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+## Each one in detail
+
+<div className={styles.detail}>
+  <h3>CLAUDE.md and CLAUDE.local.md</h3>
+  <p>Static text files. <code>CLAUDE.md</code> sits at the project root (or in subdirs for scoped instructions, or in <code>~/.claude/</code> for user-wide). It is loaded into context every conversation. Use it for project conventions, your role, tool preferences.</p>
+  <p><code>CLAUDE.local.md</code> is the git-ignored variant for personal overrides.</p>
+  <p><strong>Trade-off:</strong> always-on means it eats context. Keep it tight. Heavy reference material belongs in linked files or skills, not inline.</p>
+</div>
+
+<div className={styles.detail}>
+  <h3>Skills</h3>
+  <p>A skill is a folder: <code>.claude/skills/&lt;name&gt;/SKILL.md</code>, plus any helper scripts or references in the same folder.</p>
+  <p>The <code>SKILL.md</code> file has YAML frontmatter (at minimum <code>name</code> and <code>description</code>). Only the description is loaded into context up front. Claude reads descriptions of all available skills, then reads the full <code>SKILL.md</code> when it decides the skill is relevant.</p>
+  <p>Skills are auto-discovered from <code>.claude/skills/</code> in your current directory, walking up to the repo root, plus <code>~/.claude/skills/</code> for user-wide skills.</p>
+  <p><strong>Use when:</strong> you have a recurring workflow you want Claude to pick up on autonomously.</p>
+</div>
+
+<div className={styles.detail}>
+  <h3>Subagents</h3>
+  <p>A subagent is a markdown file at <code>.claude/agents/&lt;name&gt;.md</code> with YAML frontmatter (<code>name</code>, <code>description</code>, <code>tools</code>, optional <code>model</code>, <code>permissionMode</code>, etc.).</p>
+  <p>Each subagent runs with its own context window. Claude delegates work to them via the Agent tool. Useful for parallel work, scoped tool access, or protecting the main context from large search results.</p>
+  <p><strong>Use when:</strong> you want isolated research or specialised work that shouldn't pollute the main conversation.</p>
+</div>
+
+<div className={styles.detail}>
+  <h3>Hooks</h3>
+  <p>Shell commands the harness runs automatically on events. Configured in <code>settings.json</code>:</p>
+  <ul>
+    <li><code>PreToolUse</code> / <code>PostToolUse</code> -- before or after a tool call</li>
+    <li><code>UserPromptSubmit</code> -- when you press enter</li>
+    <li><code>Stop</code> -- when Claude finishes its turn</li>
+    <li><code>SessionStart</code> -- new session</li>
+  </ul>
+  <p>Claude doesn't choose to fire hooks. The harness does. That's the key distinction from skills.</p>
+  <p><strong>Use when:</strong> you want deterministic automation -- auto-format after edits, block dangerous commands, log activity, inject context.</p>
+</div>
+
+<div className={styles.detail}>
+  <h3>Plugins</h3>
+  <p>A packaging format. A plugin bundles skills, hooks, slash commands, subagents, and MCP servers into one installable unit, defined by a <code>.claude-plugin/plugin.json</code> manifest.</p>
+  <p>Installed from a marketplace or local path. Think of plugins as the "npm package" of Claude Code extensions.</p>
+  <p><strong>Use when:</strong> you want to share a coherent set of extensions with others, or reuse them across machines.</p>
+</div>
+
+<div className={styles.detail}>
+  <h3>Slash commands</h3>
+  <p>Custom prompts in <code>.claude/commands/&lt;name&gt;.md</code>. Type <code>/name</code> in chat to expand. Different from skills because you trigger them explicitly.</p>
+  <p>Newer Claude Code projects merge slash commands into skills (a user-invocable skill produces <code>/name</code> as well, with extra features). Both <code>.claude/commands/</code> and user-invocable skills work today; skills are the path forward.</p>
+</div>
+
+<div className={styles.detail}>
+  <h3>MCP servers</h3>
+  <p>External tool providers via the Model Context Protocol. Configured in <code>.mcp.json</code> or in <code>settings.json</code>. They expose extra tools to Claude (e.g. an n8n MCP exposes workflow management tools).</p>
+  <p>MCP is how you give Claude access to systems outside its built-in toolset.</p>
+</div>
+
+<div className={styles.detail}>
+  <h3>settings.json</h3>
+  <p>The harness config. Lives at <code>.claude/settings.json</code> (project) or <code>~/.claude/settings.json</code> (user). Controls hooks, permissions, env vars, model selection, statusline, and skill overrides.</p>
+  <p><code>settings.local.json</code> is the git-ignored variant for personal config.</p>
+</div>
+
+<div className={styles.detail}>
+  <h3>Memory</h3>
+  <p>Files Claude writes itself, persisted across conversations. Stored under <code>~/.claude/projects/&lt;slug&gt;/memory/</code>, indexed by a <code>MEMORY.md</code> file.</p>
+  <p>Memory is for stable facts about you, your project, and your preferences. Not for in-progress task state.</p>
+</div>
+
+<div className={styles.detail}>
+  <h3>Bundled skills (built-ins)</h3>
+  <p>Claude Code ships with built-in skills you can call directly without writing your own: <code>/loop</code>, <code>/run</code>, <code>/verify</code>, <code>/security-review</code>, <code>/review</code>, <code>/init</code>, <code>/claude-api</code>, and more. They behave the same as project skills but live inside the binary.</p>
+</div>
+
+## Decision guide
+
+<div className={styles.decision}>
+  <table>
+    <thead>
+      <tr>
+        <th>I want to...</th>
+        <th>Use</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td className={styles.goal}>Tell Claude how this project works</td>
+        <td><code>CLAUDE.md</code></td>
+      </tr>
+      <tr>
+        <td className={styles.goal}>Add a personal override that isn't shared with the team</td>
+        <td><code>CLAUDE.local.md</code></td>
+      </tr>
+      <tr>
+        <td className={styles.goal}>Build a reusable workflow Claude picks up on its own</td>
+        <td>Skill</td>
+      </tr>
+      <tr>
+        <td className={styles.goal}>Delegate research without polluting context</td>
+        <td>Subagent</td>
+      </tr>
+      <tr>
+        <td className={styles.goal}>Run a script every time Claude edits a file</td>
+        <td>Hook (<code>PostToolUse</code>)</td>
+      </tr>
+      <tr>
+        <td className={styles.goal}>Block dangerous commands before they run</td>
+        <td>Hook (<code>PreToolUse</code>)</td>
+      </tr>
+      <tr>
+        <td className={styles.goal}>Type <code>/foo</code> to expand a prompt</td>
+        <td>Slash command (or user-invocable skill)</td>
+      </tr>
+      <tr>
+        <td className={styles.goal}>Give Claude access to an external system</td>
+        <td>MCP server</td>
+      </tr>
+      <tr>
+        <td className={styles.goal}>Share a set of extensions with others</td>
+        <td>Plugin</td>
+      </tr>
+      <tr>
+        <td className={styles.goal}>Have Claude remember something across sessions</td>
+        <td>Memory (Claude writes it itself)</td>
+      </tr>
+      <tr>
+        <td className={styles.goal}>Change permissions, model, or env</td>
+        <td><code>settings.json</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+## A few terms that confuse people
+
+<div className={styles.note}>
+  <p><strong>"agents.md"</strong> -- there is no single <code>agents.md</code> file in Claude Code. Each subagent gets its own file in <code>.claude/agents/</code>. The single-file <code>AGENTS.md</code> exists in <strong>Codex</strong>, not Claude Code -- a common source of confusion if you've worked with both.</p>
+  <p><strong>"Skills vs slash commands"</strong> -- a user-invocable skill produces a slash command. The mechanisms overlap. Prefer skills going forward; they have more features and are where the platform is heading.</p>
+  <p><strong>"Skills vs subagents"</strong> -- skills run in the main conversation context. Subagents run in their own context window. Use a subagent when you want isolation (parallel work, large search results, scoped tools).</p>
+</div>
+
+## Related
+
+- [Cheatsheet](./cheatsheet.md) -- the slash commands and file references I actually use
+- [Embed Codex in workspace](./embed-codex-in-workspace.md) -- running Claude Code alongside Codex
+- [Tool-agnostic setup](./tool-agnostic-setup.mdx) -- one project, multiple coding agents
+
+</div>

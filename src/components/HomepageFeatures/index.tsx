@@ -1,68 +1,63 @@
 import type {ReactNode} from 'react';
-import clsx from 'clsx';
-import Heading from '@theme/Heading';
+import Link from '@docusaurus/Link';
 import styles from './styles.module.css';
 
-type FeatureItem = {
+type TopicCard = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
-  description: ReactNode;
+  description: string;
+  href: string;
+  tag: string;
+  accent: 'blue' | 'green' | 'orange';
 };
 
-const FeatureList: FeatureItem[] = [
+const topics: TopicCard[] = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
-    description: (
-      <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
-      </>
-    ),
+    title: 'Claude Code',
+    description: 'Cheatsheets, slash commands, and patterns for Anthropic’s coding agent.',
+    href: '/docs/claude-code/cheatsheet',
+    tag: 'AI tooling',
+    accent: 'orange',
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
-    description: (
-      <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
-      </>
-    ),
+    title: 'Claude Code + Codex',
+    description: 'Setting up one project so both Claude Code and Codex can work from the same context.',
+    href: '/docs/claude-code/tool-agnostic-setup',
+    tag: 'Setup guide',
+    accent: 'blue',
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
-    description: (
-      <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
-      </>
-    ),
+    title: 'Embedding Codex',
+    description: 'Running Claude Code and Codex side by side in the same repo without stepping on each other.',
+    href: '/docs/claude-code/embed-codex-in-workspace',
+    tag: 'Workflow',
+    accent: 'green',
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function TopicTile({title, description, href, tag, accent}: TopicCard) {
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
-      </div>
-    </div>
+    <Link to={href} className={`${styles.card} ${styles[`accent_${accent}`]}`}>
+      <span className={styles.cardTag}>{tag}</span>
+      <h3 className={styles.cardTitle}>{title}</h3>
+      <p className={styles.cardDesc}>{description}</p>
+      <span className={styles.cardArrow}>Read &rarr;</span>
+    </Link>
   );
 }
 
 export default function HomepageFeatures(): ReactNode {
   return (
-    <section className={styles.features}>
-      <div className="container">
-        <div className="row">
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
+    <section className={styles.section}>
+      <div className={styles.wrap}>
+        <header className={styles.sectionHeader}>
+          <h2 className={styles.sectionTitle}>Start here</h2>
+          <p className={styles.sectionLede}>
+            The guides I reach for most. Updated as I learn.
+          </p>
+        </header>
+        <div className={styles.grid}>
+          {topics.map((t) => (
+            <TopicTile key={t.title} {...t} />
           ))}
         </div>
       </div>

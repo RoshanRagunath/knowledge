@@ -1,11 +1,110 @@
-.features {
-  display: flex;
-  align-items: center;
-  padding: 2rem 0;
-  width: 100%;
+.section {
+  padding: 70px 24px 100px;
 }
 
-.featureSvg {
-  height: 200px;
-  width: 200px;
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.sectionHeader {
+  margin-bottom: 36px;
+}
+
+.sectionTitle {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  margin: 0 0 8px;
+  color: var(--ifm-color-content);
+}
+
+.sectionLede {
+  font-size: 1.02rem;
+  color: var(--ifm-color-content-secondary);
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+@media (max-width: 880px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-toc-border-color);
+  border-radius: 14px;
+  padding: 24px 22px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--card-accent, var(--ifm-color-primary));
+  opacity: 0.9;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--card-accent, var(--ifm-color-primary));
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  text-decoration: none;
+}
+
+.accent_blue   { --card-accent: #2563EB; }
+.accent_green  { --card-accent: #10B981; }
+.accent_orange { --card-accent: #F59E0B; }
+
+.cardTag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--card-accent, var(--ifm-color-primary));
+  background: color-mix(in srgb, var(--card-accent, var(--ifm-color-primary)) 12%, transparent);
+  padding: 4px 9px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+  width: fit-content;
+}
+
+.cardTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 8px;
+  color: var(--ifm-color-content);
+}
+
+.cardDesc {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--ifm-color-content-secondary);
+  margin: 0 0 18px;
+  flex: 1;
+}
+
+.cardArrow {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--card-accent, var(--ifm-color-primary));
+}
+
+[data-theme='dark'] .card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
