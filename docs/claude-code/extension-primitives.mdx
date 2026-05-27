@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 title: Claude Code extension primitives
-description: Hooks, Skills, Plugins, CLAUDE.md, subagents, MCP -- what they each are, when they load, and which one to reach for.
+description: Hooks, Skills, Plugins, CLAUDE.md, subagents, MCP -- what they each are, when they load and which one to reach for.
 ---
 
 import styles from './extension-primitives.module.css';
@@ -13,12 +13,12 @@ import styles from './extension-primitives.module.css';
 The terms blur together because they all "extend Claude Code" but they sit at different layers. The fastest way to keep them straight is to ask two questions about each one: **when does it load**, and **who triggers it**.
 
 <div className={styles.intro}>
-  <p><strong>The mental model in one sentence:</strong> some files are always in front of Claude (<code>CLAUDE.md</code>), some are invoked on demand (Skills, Subagents, MCP), some fire automatically on events (Hooks), and some bundle everything together for sharing (Plugins).</p>
+  <p><strong>The mental model in one sentence:</strong> some files are always in front of Claude (<code>CLAUDE.md</code>), some are invoked on demand (Skills, Subagents, MCP), some fire automatically on events (Hooks) and some bundle everything together for sharing (Plugins).</p>
 </div>
 
 ## The five layers
 
-Each card below shows: the primitive, where it lives, and what it does in one line.
+Each card below shows: the primitive, where it lives and what it does in one line.
 
 <div className={styles.layerStack}>
 
@@ -112,7 +112,7 @@ Each card below shows: the primitive, where it lives, and what it does in one li
       <div className={styles.card}>
         <div className={styles.cardName}>Plugins</div>
         <div className={styles.cardPath}>.claude-plugin/plugin.json</div>
-        <p className={styles.cardDesc}>A packaging format. Bundles skills, hooks, slash commands, subagents, and MCP servers into one shareable unit.</p>
+        <p className={styles.cardDesc}>A packaging format. Bundles skills, hooks, slash commands, subagents and MCP servers into one shareable unit.</p>
       </div>
     </div>
   </div>
@@ -210,7 +210,7 @@ Each card below shows: the primitive, where it lives, and what it does in one li
 <div className={styles.detail}>
   <h3>Subagents</h3>
   <p>A subagent is a markdown file at <code>.claude/agents/&lt;name&gt;.md</code> with YAML frontmatter (<code>name</code>, <code>description</code>, <code>tools</code>, optional <code>model</code>, <code>permissionMode</code>, etc.).</p>
-  <p>Each subagent runs with its own context window. Claude delegates work to them via the Agent tool. Useful for parallel work, scoped tool access, or protecting the main context from large search results.</p>
+  <p>Each subagent runs with its own context window. Claude delegates work to them via the Agent tool. Useful for parallel work, scoped tool access or protecting the main context from large search results.</p>
   <p><strong>Use when:</strong> you want isolated research or specialised work that shouldn't pollute the main conversation.</p>
 </div>
 
@@ -229,7 +229,7 @@ Each card below shows: the primitive, where it lives, and what it does in one li
 
 <div className={styles.detail}>
   <h3>Plugins</h3>
-  <p>A packaging format. A plugin bundles skills, hooks, slash commands, subagents, and MCP servers into one installable unit, defined by a <code>.claude-plugin/plugin.json</code> manifest.</p>
+  <p>A packaging format. A plugin bundles skills, hooks, slash commands, subagents and MCP servers into one installable unit, defined by a <code>.claude-plugin/plugin.json</code> manifest.</p>
   <p>Installed from a marketplace or local path. Think of plugins as the "npm package" of Claude Code extensions.</p>
   <p><strong>Use when:</strong> you want to share a coherent set of extensions with others, or reuse them across machines.</p>
 </div>
@@ -248,19 +248,19 @@ Each card below shows: the primitive, where it lives, and what it does in one li
 
 <div className={styles.detail}>
   <h3>settings.json</h3>
-  <p>The harness config. Lives at <code>.claude/settings.json</code> (project) or <code>~/.claude/settings.json</code> (user). Controls hooks, permissions, env vars, model selection, statusline, and skill overrides.</p>
+  <p>The harness config. Lives at <code>.claude/settings.json</code> (project) or <code>~/.claude/settings.json</code> (user). Controls hooks, permissions, env vars, model selection, statusline and skill overrides.</p>
   <p><code>settings.local.json</code> is the git-ignored variant for personal config.</p>
 </div>
 
 <div className={styles.detail}>
   <h3>Memory</h3>
   <p>Files Claude writes itself, persisted across conversations. Stored under <code>~/.claude/projects/&lt;slug&gt;/memory/</code>, indexed by a <code>MEMORY.md</code> file.</p>
-  <p>Memory is for stable facts about you, your project, and your preferences. Not for in-progress task state.</p>
+  <p>Memory is for stable facts about you, your project and your preferences. Not for in-progress task state.</p>
 </div>
 
 <div className={styles.detail}>
   <h3>Bundled skills (built-ins)</h3>
-  <p>Claude Code ships with built-in skills you can call directly without writing your own: <code>/loop</code>, <code>/run</code>, <code>/verify</code>, <code>/security-review</code>, <code>/review</code>, <code>/init</code>, <code>/claude-api</code>, and more. They behave the same as project skills but live inside the binary.</p>
+  <p>Claude Code ships with built-in skills you can call directly without writing your own: <code>/loop</code>, <code>/run</code>, <code>/verify</code>, <code>/security-review</code>, <code>/review</code>, <code>/init</code>, <code>/claude-api</code> and more. They behave the same as project skills but live inside the binary.</p>
 </div>
 
 ## Decision guide
@@ -315,7 +315,7 @@ Each card below shows: the primitive, where it lives, and what it does in one li
         <td>Memory (Claude writes it itself)</td>
       </tr>
       <tr>
-        <td className={styles.goal}>Change permissions, model, or env</td>
+        <td className={styles.goal}>Change permissions, model or env</td>
         <td><code>settings.json</code></td>
       </tr>
     </tbody>

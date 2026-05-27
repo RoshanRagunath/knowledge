@@ -40,7 +40,7 @@
   --ifm-pre-background: #0F1117;
   --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.08);
 
-  /* Navbar — Linear-style dark */
+  /* Navbar -- Linear-style dark */
   --ifm-navbar-background-color: #0A0A0A;
   --ifm-navbar-link-color: #D1D5DB;
   --ifm-navbar-link-hover-color: #FFFFFF;
@@ -128,16 +128,16 @@ h1, h2, h3, h4, h5, h6 { letter-spacing: -0.015em; line-height: 1.25; }
 .markdown table { margin: 1.25rem 0 1.75rem; }
 .markdown hr { margin: 2.5rem 0; }
 
-/* Subtle separator under h2 — Linear/Cursor style */
+/* Subtle separator under h2 -- Linear/Cursor style */
 .markdown h2 {
   border-bottom: 1px solid var(--ifm-color-emphasis-200);
   padding-bottom: 0.6rem;
 }
 
-/* Article container — a bit wider feels less cramped */
+/* Article container -- a bit wider feels less cramped */
 .theme-doc-markdown { padding: 0.5rem 0 4rem; }
 
-/* Navbar — Linear-style: dark, semi-transparent, blurred, slim */
+/* Navbar -- Linear-style: dark, semi-transparent, blurred and slim */
 .navbar {
   background: rgba(10, 10, 10, 0.72);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -156,7 +156,7 @@ h1, h2, h3, h4, h5, h6 { letter-spacing: -0.015em; line-height: 1.25; }
 .navbar__brand { color: #FFFFFF; margin-right: 28px; }
 .navbar__logo img { filter: brightness(0) invert(1); height: 22px; }
 
-/* Inline nav links — Linear style: small, muted, tight */
+/* Inline nav links -- Linear style: small, muted and tight */
 .navbar__link {
   color: #A1A1AA;
   font-size: 0.88rem;

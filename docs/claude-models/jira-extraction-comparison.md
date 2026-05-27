@@ -1,12 +1,12 @@
 ---
 sidebar_position: 1
-title: Opus vs Sonnet vs Haiku — Jira story extraction
-description: Real-workload comparison of Claude Opus 4.7, Sonnet 4.6, and Haiku 4.5 extracting user stories from a product doc into Jira tickets via n8n.
+title: Opus vs Sonnet vs Haiku -- Jira story extraction
+description: Real-workload comparison of Claude Opus 4.7, Sonnet 4.6 and Haiku 4.5 extracting user stories from a product doc into Jira tickets via n8n.
 ---
 
 # Claude model comparison: Jira story extraction workflow
 
-Comparison of **Claude Opus 4.7, Sonnet 4.6, and Haiku 4.5** for extracting user stories from a product document and creating Jira tickets, run inside the `[Stories] Ingest & Create Jira Issues` n8n workflow.
+Comparison of **Claude Opus 4.7, Sonnet 4.6 and Haiku 4.5** for extracting user stories from a product document and creating Jira tickets, run inside the `[Stories] Ingest & Create Jira Issues` n8n workflow.
 
 Tests run on 2026-05-27. Source: a `userstories whimsical.md` file containing 1 epic + 5 user stories.
 
@@ -16,7 +16,7 @@ Tests run on 2026-05-27. Source: a `userstories whimsical.md` file containing 1 
 
 When the system prompt instructs the model to extract text **verbatim** (no paraphrasing, no rewriting), **all three Claude models produce identical content**. The only meaningful differences are speed and cost.
 
-**Recommendation: use Haiku 4.5 as the default model.** Same ticket content as Opus, ~2x faster, ~10x cheaper, and the only model that reliably finishes under common proxy timeouts.
+**Recommendation: use Haiku 4.5 as the default model.** Same ticket content as Opus, ~2x faster, ~10x cheaper and the only model that reliably finishes under common proxy timeouts.
 
 ---
 
@@ -24,11 +24,11 @@ When the system prompt instructs the model to extract text **verbatim** (no para
 
 Verbatim = word-for-word, exactly as written.
 
-By default, LLMs paraphrase, summarize, expand, or add interpretive commentary like `[ASSUMPTION]` blocks and `Additional context:` paragraphs. They treat themselves as helpful editors. For ticket extraction this is the wrong behavior: we want the source document's content reproduced into Jira, not reinvented.
+By default, LLMs paraphrase, summarize, expand or add interpretive commentary like `[ASSUMPTION]` blocks and `Additional context:` paragraphs. They treat themselves as helpful editors. For ticket extraction this is the wrong behavior: we want the source document's content reproduced into Jira, not reinvented.
 
 The system prompt was updated to force strict extraction:
 
-> Copy content from the source document VERBATIM. Do not paraphrase, summarize, rewrite, or compress. Do not add commentary, context paragraphs, `[ASSUMPTION]` markers, "Additional context", "Business Value", or any text not present in the document. Do not infer or invent acceptance criteria, test criteria, links, or priorities. If the document does not state it, omit it.
+> Copy content from the source document VERBATIM. Do not paraphrase, summarize, rewrite or compress. Do not add commentary, context paragraphs, `[ASSUMPTION]` markers, "Additional context", "Business Value" or any text not present in the document. Do not infer or invent acceptance criteria, test criteria, links or priorities. If the document does not state it, omit it.
 
 Under this prompt, every model behaves like a structurer (reshaping the doc's content into the JSON schema) rather than a rewriter. That convergence is what made the comparison clean.
 

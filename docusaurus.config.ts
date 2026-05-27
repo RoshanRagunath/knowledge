@@ -4,7 +4,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Roshan Ragunath',
-  tagline: 'Cheatsheets and notes from building with Claude Code, n8n, and Betty Blocks',
+  tagline: 'Cheatsheets and notes from building with Claude Code, n8n and Betty Blocks',
   favicon: 'img/favicon.ico',
 
   future: {
@@ -124,7 +124,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Roshan Ragunath. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Roshan Ragunath.`,
     },
     prism: {
       theme: prismThemes.github,

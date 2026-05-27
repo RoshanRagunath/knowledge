@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 title: Embedding Claude Code and Codex in the same workspace
-description: Running Claude Code and OpenAI Codex CLI side by side on the same project -- setup, isolation, and avoiding stepping on each other.
+description: Running Claude Code and OpenAI Codex CLI side by side on the same project -- setup, isolation and avoiding stepping on each other.
 draft: false
 ---
 

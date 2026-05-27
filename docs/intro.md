@@ -1,18 +1,18 @@
 ---
 sidebar_position: 1
 title: Introduction
-description: A public knowledge base of cheatsheets and tutorials from Roshan Ragunath -- Claude Code, n8n, Betty Blocks, and AI-assisted development.
+description: A public knowledge base of cheatsheets and tutorials from Roshan Ragunath -- Claude Code, n8n, Betty Blocks and AI-assisted development.
 ---
 
 # Knowledge
 
-Practical notes and cheatsheets from what I learn building software -- mostly Claude Code, n8n, Betty Blocks, and AI-assisted development workflows.
+Practical notes and cheatsheets from what I learn building software -- mostly Claude Code, n8n, Betty Blocks and AI-assisted development workflows.
 
 Everything here is written because past-me would have wanted it. If it helps future-you too, even better.
 
 ## Start here
 
-- [Claude Code cheatsheet](./claude-code/cheatsheet.md) -- slash commands, file references, and patterns I use daily
+- [Claude Code cheatsheet](./claude-code/cheatsheet.md) -- slash commands, file references and patterns I use daily
 - [Embedding Claude Code and Codex in the same workspace](./claude-code/embed-codex-in-workspace.md) -- running both AI coding tools side by side
 
 ## Topics

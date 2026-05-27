@@ -13,7 +13,7 @@ type TopicCard = {
 const topics: TopicCard[] = [
   {
     title: 'Claude Code',
-    description: 'Cheatsheets, slash commands, and patterns for Anthropic’s coding agent.',
+    description: 'Cheatsheets, slash commands and patterns for Anthropic’s coding agent.',
     href: '/docs/claude-code/cheatsheet',
     tag: 'AI tooling',
     accent: 'orange',

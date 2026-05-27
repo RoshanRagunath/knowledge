@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 title: Claude Code cheatsheet
-description: The slash commands, file references, and configuration patterns I reach for daily when working with Claude Code.
+description: The slash commands, file references and configuration patterns I reach for daily when working with Claude Code.
 ---
 
 # Claude Code cheatsheet
@@ -79,7 +79,7 @@ Settings.json hooks run shell commands on events (Stop, PreToolUse, PostToolUse,
 
 ## Plan mode
 
-Useful when the change is non-trivial. Claude explores, writes a plan to a file, asks clarifying questions, and waits for approval before touching code.
+Useful when the change is non-trivial. Claude explores, writes a plan to a file, asks clarifying questions and waits for approval before touching code.
 
 - Toggle: `shift+tab` (or whatever your keybind is set to)
 - Plan file lives at `~/.claude/plans/<slug>.md`
