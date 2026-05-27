@@ -1,0 +1,8 @@
+{
+  "label": "Claude Models",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "Comparisons, benchmarks, and selection notes for the Claude model family (Opus, Sonnet, Haiku) across real workloads."
+  }
+}
