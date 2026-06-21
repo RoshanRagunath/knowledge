@@ -1,0 +1,6 @@
+# Cloudflare Pages config — used by `wrangler pages dev` for local testing and to
+# pin the runtime compatibility settings. The Anthropic SDK needs nodejs_compat.
+name = "knowledge"
+pages_build_output_dir = "build"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
